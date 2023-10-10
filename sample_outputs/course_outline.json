@@ -1,0 +1,52 @@
+{
+  "course_title": "Building a GPT model from scratch",
+  "course_summary": "A hands-on course where you will learn how to build a GPT (Generative Pre-trained Transformer) model from scratch. Throughout the course, you will work towards building a functional and useful GPT model while learning the necessary concepts and techniques.",
+  "prior_knowledge_assumed": "Python, Data structures & algorithms",
+  "modules": [
+    {
+      "module_title": "Module 1: Introduction to GPT models",
+      "submodules": [
+        {
+          "submodule_title": "Submodule 1: Understanding the Transformer architecture",
+          "submodule_summary": "Learn the basics of the Transformer architecture, which is the backbone of GPT models. Understand the different components of a Transformer model, such as self-attention mechanism and feed-forward neural network.",
+          "word_count": 500
+        },
+        {
+          "submodule_title": "Submodule 2: Preprocessing and tokenization",
+          "submodule_summary": "Explore the preprocessing steps required for training a GPT model. Learn about tokenization techniques and how to handle text data effectively.",
+          "word_count": 600
+        }
+      ]
+    },
+    {
+      "module_title": "Module 2: Building the GPT model",
+      "submodules": [
+        {
+          "submodule_title": "Submodule 1: Designing the architecture",
+          "submodule_summary": "Dive deeper into the design of a GPT model. Learn how to structure the layers, define the input and output formats, and optimize the model for better performance.",
+          "word_count": 700
+        },
+        {
+          "submodule_title": "Submodule 2: Training the GPT model",
+          "submodule_summary": "Explore the training process of a GPT model. Understand how to prepare the training data, set up the training pipeline, and fine-tune the model for specific tasks.",
+          "word_count": 800
+        }
+      ]
+    },
+    {
+      "module_title": "Module 3: Enhancing the GPT model",
+      "submodules": [
+        {
+          "submodule_title": "Submodule 1: Handling long-range dependencies",
+          "submodule_summary": "Learn advanced techniques for handling long-range dependencies in GPT models. Understand how to improve the model's ability to generate coherent and context-aware text.",
+          "word_count": 900
+        },
+        {
+          "submodule_title": "Submodule 2: Fine-tuning the GPT model",
+          "submodule_summary": "Explore the process of fine-tuning a GPT model for specific tasks. Learn how to adapt the pre-trained model weights to new datasets and optimize the performance for targeted applications.",
+          "word_count": 1000
+        }
+      ]
+    }
+  ]
+}

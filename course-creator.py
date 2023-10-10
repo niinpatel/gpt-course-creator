@@ -62,7 +62,7 @@ def create_course_outline(topic, guidelines, prior_knowledge_assumed):
 
     print("Creating course outline...")
 
-    for _ in range(3):  # Retry up to 3 times if json is invalid
+    for _ in range(3):
         response = openai.ChatCompletion.create(
             model=model,
             messages=[
@@ -81,6 +81,7 @@ def create_course_outline(topic, guidelines, prior_knowledge_assumed):
         print("Course outline created: ")
         print(course_outline_string)
 
+        print("Validating the output from GPT...")
         try:
             course_outline_json = json.loads(course_outline_string)
 
@@ -165,6 +166,7 @@ def create_course(course_outline_json):
 def save_course_to_files(course_outline_json):
     print("Now saving the content to individual markdown files...")
 
+    # delete any existing outputs first
     if os.path.exists("outputs"):
         shutil.rmtree("outputs")
 

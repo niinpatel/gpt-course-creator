@@ -27,7 +27,7 @@ python3 course-creator.py \
     --prior_knowledge "Python, Data structures & algorithms"
 ```
 
-3. The script will generate a `course_outline.json` file with the course outline. The course outline will be saved in the `outputs` directory.
+3. The script will generate a `course_outline.json` file with the course outline. The course will be saved in the `outputs` directory as markdown files.
 
 ## Generated Output
 

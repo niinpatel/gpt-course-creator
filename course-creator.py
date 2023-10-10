@@ -36,7 +36,7 @@ def create_course_outline(topic, guidelines, prior_knowledge_assumed):
     Output format must be a json format. It contains, course title, course summary, modules, submodules & word count. 
     Note that the course can contain code examples & word count is excluding the code examples. 
 
-    [
+    {{
         "course_title": <course title>,
         "course_summary": <course summary>,
         "prior_knowledge_assumed": <prior knowledge assumed>,
@@ -49,7 +49,7 @@ def create_course_outline(topic, guidelines, prior_knowledge_assumed):
             {{...}},
             {{...}}
         ]
-    ]
+    }}
     """
 
     userPrompt = f"""

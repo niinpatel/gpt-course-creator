@@ -62,41 +62,45 @@ def create_course_outline(topic, guidelines, prior_knowledge_assumed):
 
     print("Creating course outline...")
 
-    response = openai.ChatCompletion.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": systemPrompt},
-            {"role": "user", "content": userPrompt},
-        ],
-        temperature=1,
-        max_tokens=8191,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0,
-    )
+    for _ in range(3):  # Retry up to 3 times if json is invalid
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": systemPrompt},
+                {"role": "user", "content": userPrompt},
+            ],
+            temperature=1,
+            max_tokens=8191,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0,
+        )
 
-    course_outline_string = response["choices"][0]["message"]["content"]
+        course_outline_string = response["choices"][0]["message"]["content"]
 
-    print("Course outline created: ")
-    print(course_outline_string)
+        print("Course outline created: ")
+        print(course_outline_string)
 
-    course_outline_json = json.loads(course_outline_string)
+        try:
+            course_outline_json = json.loads(course_outline_string)
 
-    try:
-        assert "course_title" in course_outline_json
-        assert "course_summary" in course_outline_json
-        assert "prior_knowledge_assumed" in course_outline_json
-        assert "modules" in course_outline_json
-        for module in course_outline_json["modules"]:
-            assert "module_title" in module
-            assert "submodules" in module
-            for submodule in module["submodules"]:
-                assert "submodule_title" in submodule
-                assert "submodule_summary" in submodule
-                assert "word_count" in submodule
-                assert isinstance(submodule["word_count"], int)
-    except AssertionError:
-        print("Invalid output_json format")
+            assert "course_title" in course_outline_json
+            assert "course_summary" in course_outline_json
+            assert "prior_knowledge_assumed" in course_outline_json
+            assert "modules" in course_outline_json
+            for module in course_outline_json["modules"]:
+                assert "module_title" in module
+                assert "submodules" in module
+                for submodule in module["submodules"]:
+                    assert "submodule_title" in submodule
+                    assert "submodule_summary" in submodule
+                    assert "word_count" in submodule
+                    assert isinstance(submodule["word_count"], int)
+            break  # If no exception was raised, break the loop
+        except (json.JSONDecodeError, AssertionError):
+            print("Invalid output_json format, retrying...")
+    else:  # If the loop completed without a break, exit the program
+        print("Failed to create a valid course outline after 3 attempts.")
         exit(1)
 
     return course_outline_json

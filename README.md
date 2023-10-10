@@ -21,7 +21,7 @@ export OPENAI_API_KEY='your-api-key'
 2. Run the `course-creator.py` script. You will need to provide the topic, guidelines, and prior knowledge assumed as inputs to the program. For example:
 
 ```bash
-python course-creator.py \
+python3 course-creator.py \
     --topic "Building a GPT model from scratch" \
     --guidelines "A mostly hands on course where throughout the course ideally we work towards building something useful constantly & we learn concepts that help us build it." \
     --prior_knowledge "Python, Data structures & algorithms"
